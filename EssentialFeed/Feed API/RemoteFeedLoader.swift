@@ -36,7 +36,7 @@ public final class RemoteFeedLoader {
         client.get(from: url) { result  in
             switch result {
             case .success(let data, let response):
-                completion(.invalidData)
+                 completion(.invalidData)
             case .failure(_):
                 completion(.connectivity)
             }
