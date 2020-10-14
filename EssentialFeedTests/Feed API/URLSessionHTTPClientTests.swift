@@ -40,7 +40,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     func test_getFromURL_performRequestWithURL() {
         
-        let url = URL(string: "http://a-url.com")!
+        let url = AnyURL()
         
         let exp = expectation(description: "Wait for request")
         URLProtocolStub.observeRequests { request in
@@ -58,13 +58,12 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
  
     func test_getFromURL_completesWithError() {
-        let url = URL(string: "http://a-url.com")!
         let error = NSError(domain: "an error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
                 
         let exp = expectation(description: "wait for completion")
         
-        makeSUT().get(from: url) { result in
+        makeSUT().get(from: AnyURL()) { result in
             switch result {
             case let .failure(receivedError as NSError):
                 XCTAssertEqual(receivedError, error)
@@ -80,16 +79,14 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     // MARK: - Helpers
     
+    private func AnyURL() -> URL {
+        URL(string: "http://a-url.com")!
+    }
+    
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> URLSessionHTTPClient {
         let sut = URLSessionHTTPClient()
         trackForMemoryLeaks(instance: sut, file: file, line: line)
         return sut
-    }
-    
-    private func trackForMemoryLeaks(instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated, potential memory leak", file: file, line: line)
-        }
     }
     
     private class URLProtocolStub: URLProtocol {
