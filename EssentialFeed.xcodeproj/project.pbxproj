@@ -10,6 +10,8 @@
 		A11B7748253FA3B900D67262 /* EssentialFeedAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B7747253FA3B900D67262 /* EssentialFeedAPIEndToEndTests.swift */; };
 		A11B774D253FB2CC00D67262 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C652F909253697F9006D00D9 /* XCTestCase+MemoryLeakTracking.swift */; };
 		A11B77522553877400D67262 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B77512553877400D67262 /* CacheFeedUseCaseTests.swift */; };
+		A1D80FBC255AE6A6001224C3 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D80FBB255AE6A6001224C3 /* LocalFeedLoader.swift */; };
+		A1D80FBE255AE6C1001224C3 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D80FBD255AE6C1001224C3 /* FeedStore.swift */; };
 		C634041325259551005092C5 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C634040925259551005092C5 /* EssentialFeed.framework */; };
 		C634041825259551005092C5 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634041725259551005092C5 /* LoadFeedFromRemoteUseCaseTests.swift */; };
 		C634041A25259551005092C5 /* EssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = C634040C25259551005092C5 /* EssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,6 +40,8 @@
 		A11B7747253FA3B900D67262 /* EssentialFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		A11B7749253FA3B900D67262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11B77512553877400D67262 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
+		A1D80FBB255AE6A6001224C3 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		A1D80FBD255AE6C1001224C3 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		C634040925259551005092C5 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C634040C25259551005092C5 /* EssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeed.h; sourceTree = "<group>"; };
 		C634040D25259551005092C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
+		A1D80FBA255AE697001224C3 /* Feed Cache */ = {
+			isa = PBXGroup;
+			children = (
+				A1D80FBB255AE6A6001224C3 /* LocalFeedLoader.swift */,
+				A1D80FBD255AE6C1001224C3 /* FeedStore.swift */,
+			);
+			path = "Feed Cache";
+			sourceTree = "<group>";
+		};
 		C63403FF25259551005092C5 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +133,7 @@
 		C634040B25259551005092C5 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				A1D80FBA255AE697001224C3 /* Feed Cache */,
 				C6733C3F2526CE5E0011B6B0 /* Feed Feature */,
 				C6733C402526CE8F0011B6B0 /* Feed API */,
 				C634040C25259551005092C5 /* EssentialFeed.h */,
@@ -326,6 +340,8 @@
 				C6733DD1252EB23F0011B6B0 /* FeedItemsMapper.swift in Sources */,
 				C63404262525975A005092C5 /* FeedLoader.swift in Sources */,
 				C6733C422526CEB20011B6B0 /* RemoteFeedLoader.swift in Sources */,
+				A1D80FBE255AE6C1001224C3 /* FeedStore.swift in Sources */,
+				A1D80FBC255AE6A6001224C3 /* LocalFeedLoader.swift in Sources */,
 				C6733DCF252EB1E70011B6B0 /* HTTPClient.swift in Sources */,
 				C634042425259564005092C5 /* FeedItem.swift in Sources */,
 				C652F90C25395B0A006D00D9 /* URLSessionHTTPClient.swift in Sources */,
