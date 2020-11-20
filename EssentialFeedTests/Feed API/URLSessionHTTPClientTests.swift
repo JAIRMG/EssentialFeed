@@ -45,7 +45,8 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         let receivedError = resultErrorFor(data: nil, response: nil, error: requestedError)
         
-        XCTAssertEqual(receivedError as NSError?, requestedError)
+        XCTAssertEqual((receivedError as NSError?)?.domain, requestedError.domain)
+        XCTAssertEqual((receivedError as NSError?)?.code, requestedError.code)
         
     }
     
