@@ -130,7 +130,7 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         
     }
     
-    private func failure(_ error: RemoteFeedLoader.Error) -> LoadFeedResult {
+    private func failure(_ error: RemoteFeedLoader.Error) -> FeedLoader.Result {
         return .failure(error)
     }
 
