@@ -6,7 +6,6 @@
 //  Copyright © 2021 Jair Moreno G. All rights reserved.
 //
 
-import Foundation
 import EssentialFeed
 
 final class FeedViewModel {
