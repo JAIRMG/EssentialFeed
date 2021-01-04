@@ -78,6 +78,9 @@ Location</string>
                                                             <state key="normal" title="↻">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="didTapRetry" destination="hGT-Yw-j0L" eventType="touchUpInside" id="CHY-S5-VB5"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,6 +122,14 @@ Location</string>
                                         <constraint firstAttribute="bottomMargin" secondItem="I65-4I-CvF" secondAttribute="bottom" priority="999" constant="6" id="zvh-Gf-G9q"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="3DY-Fn-gXz" id="xxW-Lu-nYR"/>
+                                    <outlet property="feedImageContainer" destination="m37-WY-e6r" id="Xyy-0z-Kwa"/>
+                                    <outlet property="feedImageRetryButton" destination="fb6-dt-i07" id="p9H-R9-pXU"/>
+                                    <outlet property="feedImageView" destination="cSC-ll-Vo6" id="jmX-fr-DfI"/>
+                                    <outlet property="locationContainer" destination="arb-m3-m3p" id="xjd-Ps-wYU"/>
+                                    <outlet property="locationLabel" destination="8lc-ho-ksX" id="0qA-ZA-Yjx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
