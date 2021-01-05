@@ -20,7 +20,7 @@ final class FeedPresenter {
     private var loadingView: FeedLoadingView
     
     static var title: String {
-        "My feed"
+        "My Feed"
     }
     
     init(feedView: FeedView, loadingView: FeedLoadingView) {
