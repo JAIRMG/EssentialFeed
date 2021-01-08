@@ -295,6 +295,14 @@ final class FeedUIIntegrationTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_errorView_doesNotRenderErrorOnLoad() {
+        let (sut, _) = makeSUT()
+
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(sut.errorMessage, nil)
+    }
+    
     // MARK: - Helpers
     
     private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
