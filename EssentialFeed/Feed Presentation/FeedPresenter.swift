@@ -1,31 +1,31 @@
 //
 //  FeedPresenter.swift
-//  EssentialFeediOS
+//  EssentialFeed
 //
-//  Created by Jair Moreno Gaspar on 02/01/21.
+//  Created by Jair Moreno Gaspar on 09/01/21.
 //  Copyright © 2021 Jair Moreno G. All rights reserved.
 //
 
-import EssentialFeed
 import Foundation
 
-protocol FeedLoadingView {
-    func display(_ viewModel: FeedLoadingViewModel)
-}
-protocol FeedView {
-    func display(_ viewModel: FeedViewModel)
-}
-
-protocol FeedErrorView {
+public protocol FeedErrorView {
     func display(_ viewModel: FeedErrorViewModel)
 }
 
-final class FeedPresenter {
+public protocol FeedLoadingView {
+    func display(_ viewModel: FeedLoadingViewModel)
+}
+
+public protocol FeedView {
+    func display(_ viewModel: FeedViewModel)
+}
+
+public final class FeedPresenter {
     private var feedView: FeedView
-    private var loadingView: FeedLoadingView
     private let errorView: FeedErrorView
+    private var loadingView: FeedLoadingView
     
-    static var title: String {
+    public static var title: String {
         NSLocalizedString("FEED_VIEW_TITLE",
                           tableName: "Feed",
                           bundle: Bundle(for: FeedPresenter.self),
@@ -39,23 +39,23 @@ final class FeedPresenter {
              comment: "Error message displayed when we can't load the image feed from the server")
     }
     
-    init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
+    public init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
         self.feedView = feedView
         self.loadingView = loadingView
         self.errorView = errorView
     }
     
-    func didStartLoadingFeed() {
+    public func didStartLoadingFeed() {
         errorView.display(.noError)
         loadingView.display(FeedLoadingViewModel(isLoading: true))
     }
     
-    func didFinishLoadingFeed(with feed: [FeedImage]) {
+    public func didFinishLoadingFeed(with feed: [FeedImage]) {
         feedView.display(FeedViewModel(feed: feed))
         loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
     
-    func didFinishLoadingFeed(with error: Error) {
+    public func didFinishLoadingFeed(with error: Error) {
         errorView.display(.error(message: feedLoadError))
         loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
