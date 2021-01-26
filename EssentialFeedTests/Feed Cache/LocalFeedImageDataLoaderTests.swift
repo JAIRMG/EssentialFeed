@@ -99,11 +99,11 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
     }
     
     private func failed() -> FeedImageDataLoader.Result {
-        return .failure(LocalFeedImageDataLoader.Error.failed)
+        return .failure(LocalFeedImageDataLoader.LoadError.failed)
     }
     
     private func notFound() -> FeedImageDataLoader.Result {
-        return .failure(LocalFeedImageDataLoader.Error.notFound)
+        return .failure(LocalFeedImageDataLoader.LoadError.notFound)
     }
     
     private func never(file: StaticString = #file, line: UInt = #line) {
@@ -118,8 +118,8 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
             case let (.success(receivedData), .success(expectedData)):
                 XCTAssertEqual(receivedData, expectedData, file: file, line: line)
 
-            case (.failure(let receivedError as LocalFeedImageDataLoader.Error),
-                  .failure(let expectedError as LocalFeedImageDataLoader.Error)):
+            case (.failure(let receivedError as LocalFeedImageDataLoader.LoadError),
+                  .failure(let expectedError as LocalFeedImageDataLoader.LoadError)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
 
             default:
@@ -135,7 +135,7 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
     
     private class StoreSpy: FeedImageDataStore {
         private(set) var receivedMessages = [Message]()
-        var completions = [(FeedImageDataStore.Result) -> Void]()
+        private var retrievalCompletions = [(FeedImageDataStore.RetrievalResult) -> Void]()
         
         enum Message: Equatable {
             case retrieve(dataFor: URL)
@@ -146,17 +146,17 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
             receivedMessages.append(.insert(data: data, for: url))
         }
         
-        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.Result) -> Void) {
+        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.RetrievalResult) -> Void) {
             receivedMessages.append(.retrieve(dataFor: url))
-            completions.append(completion)
+            retrievalCompletions.append(completion)
         }
         
         func complete(with error: Error, at index: Int = 0) {
-            completions[index](.failure(error))
+            retrievalCompletions[index](.failure(error))
         }
         
         func complete(with data: Data?, at index: Int = 0) {
-            completions[index](.success(data))
+            retrievalCompletions[index](.success(data))
         }
     }
 }
