@@ -32,20 +32,17 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
         let fallbackLoader = LoaderStub(result: .success(fallbackFeed))
         let sut = FeedLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
         
-        var receivedFeed: [FeedImage]?
         let exp = expectation(description: "wait for load completion")
         sut.load { result in
             switch result {
             case let .success(received):
-                receivedFeed = received
+                XCTAssertEqual(received, primaryFeed)
             case .failure:
                 XCTFail("Expected successful load feed result, got \(result) instead")
             }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
-        
-        XCTAssertEqual(receivedFeed, primaryFeed)
     }
 
     // MARK: - Helpers
