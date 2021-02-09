@@ -124,13 +124,7 @@ class FeedImageDataLoaderWithFallBackCompositeTests: XCTestCase {
         trackForMemoryLeaks(instance: sut, file: file, line: line)
         return (sut, primaryLoader, fallbackLoader)
     }
-    
-    private func trackForMemoryLeaks(instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated, potential memory leak", file: file, line: line)
-        }
-    }
-    
+
     private func anyNSError() -> Error {
         return NSError(domain: "any error", code: 0)
     }
