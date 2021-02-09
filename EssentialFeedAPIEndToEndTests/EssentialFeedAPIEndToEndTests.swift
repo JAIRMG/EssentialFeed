@@ -119,7 +119,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
         trackForMemoryLeaks(instance: loader, file: file, line: line)
 
         let exp = expectation(description: "Wait for load completion")
-        let url = feedTestServerURL.appendingPathComponent("73A7F70C-75DA-4C2E-B5A3-EED40DC53AA6/image")
+        let url = URL(string: "https://gist.githubusercontent.com/JAIRMG/b69463682914ea93bf6178d020feaf33/raw/b327814bc1d2c5c7e2b52cca06fdd623f9854a71/FeedCaseStudyAPITestFeedImageData.png")!
         var receivedResult: FeedImageDataLoader.Result?
         _ = loader.loadImageData(from: url) { result in
             receivedResult = result
@@ -137,7 +137,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
     
     private var feedTestServerURL: URL {
-        return URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
+        return URL(string: "https://gist.githubusercontent.com/JAIRMG/239892f1ef77f125eec74733e86957dc/raw/b362c9b3daa2d035cf3b0de8bf003b68e156d0c1/feed-case-study-test-api-feed.json")!
     }
 
 }
