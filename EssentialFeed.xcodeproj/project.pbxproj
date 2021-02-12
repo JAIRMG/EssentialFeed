@@ -33,6 +33,8 @@
 		A17EF2B825631846009D559C /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EF2B725631846009D559C /* ValidateFeedCacheUseCaseTests.swift */; };
 		A17EF2BA25631E07009D559C /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EF2B925631E07009D559C /* FeedCacheTestHelpers.swift */; };
 		A17EF2BC25631ECE009D559C /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EF2BB25631ECE009D559C /* SharedTestHelpers.swift */; };
+		A1806C7425D42D5C00BD0812 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1806C7325D42D5C00BD0812 /* FeedCache.swift */; };
+		A1806C8825D6172900BD0812 /* FeedImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1806C8725D6172900BD0812 /* FeedImageCache.swift */; };
 		A1A9278C25BF9CBD006E1DD8 /* LoadFeedImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9278B25BF9CBD006E1DD8 /* LoadFeedImageDataFromCacheUseCaseTests.swift */; };
 		A1A9279425BFAD47006E1DD8 /* FeedImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9279325BFAD47006E1DD8 /* FeedImageDataStore.swift */; };
 		A1A9279C25BFAD9C006E1DD8 /* LocalFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9279B25BFAD9C006E1DD8 /* LocalFeedImageDataLoader.swift */; };
@@ -158,6 +160,8 @@
 		A17EF2B725631846009D559C /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		A17EF2B925631E07009D559C /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		A17EF2BB25631ECE009D559C /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		A1806C7325D42D5C00BD0812 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
+		A1806C8725D6172900BD0812 /* FeedImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCache.swift; sourceTree = "<group>"; };
 		A1A9278B25BF9CBD006E1DD8 /* LoadFeedImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		A1A9279325BFAD47006E1DD8 /* FeedImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataStore.swift; sourceTree = "<group>"; };
 		A1A9279B25BFAD9C006E1DD8 /* LocalFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageDataLoader.swift; sourceTree = "<group>"; };
@@ -590,6 +594,8 @@
 				A1D2ED44259E4051009B0394 /* FeedImageLoader.swift */,
 				C634042325259563005092C5 /* FeedImage.swift */,
 				C63404252525975A005092C5 /* FeedLoader.swift */,
+				A1806C7325D42D5C00BD0812 /* FeedCache.swift */,
+				A1806C8725D6172900BD0812 /* FeedImageCache.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -923,6 +929,7 @@
 				C6733DD1252EB23F0011B6B0 /* FeedItemsMapper.swift in Sources */,
 				C63404262525975A005092C5 /* FeedLoader.swift in Sources */,
 				A1D80FDB255C332F001224C3 /* RemoteFeedItem.swift in Sources */,
+				A1806C8825D6172900BD0812 /* FeedImageCache.swift in Sources */,
 				A1D2EF6A25AA7ABE009B0394 /* FeedImageViewModel.swift in Sources */,
 				A12FF2B325BA5A0E00C7E730 /* RemoteFeedImageDataLoader.swift in Sources */,
 				A11038112564B71D003DB1BF /* FeedCachePolicy.swift in Sources */,
@@ -946,6 +953,7 @@
 				A1A9279C25BFAD9C006E1DD8 /* LocalFeedImageDataLoader.swift in Sources */,
 				A1A927E825C2511B006E1DD8 /* CoreDataFeedStore+FeedImageDataLoader.swift in Sources */,
 				A1D2EF6925AA7ABE009B0394 /* FeedImagePresenter.swift in Sources */,
+				A1806C7425D42D5C00BD0812 /* FeedCache.swift in Sources */,
 				A14225BB2577435C00751FAF /* ManagedFeedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
