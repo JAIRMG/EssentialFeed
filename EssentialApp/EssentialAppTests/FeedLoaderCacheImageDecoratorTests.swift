@@ -31,8 +31,7 @@ class FeedLoaderCacheImageDecorator: FeedImageDataLoader {
 class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
     
     func test_load_deliversImageDataFeedOnSuccess() {
-        let loader = FeedImageLoaderSpy()
-        let sut = FeedLoaderCacheImageDecorator(decoratee: loader)
+        let (sut, loader) = makeSUT()
         let data = anyData()
         
         expect(sut, toCompleteWith: .success(data)) {
@@ -42,12 +41,21 @@ class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
     
     func test_load_deliversErrorOnImageLoaderFailure() {
         let error = anyNSError()
-        let loader = FeedImageLoaderSpy()
-        let sut = FeedLoaderCacheImageDecorator(decoratee: loader)
+        let (sut, loader) = makeSUT()
         
         expect(sut, toCompleteWith: .failure(error)) {
             loader.complete(with: error)
         }
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedImageDataLoader, loader: FeedImageLoaderSpy) {
+        let loader = FeedImageLoaderSpy()
+        let sut = FeedLoaderCacheImageDecorator(decoratee: loader)
+        trackForMemoryLeaks(instance: loader, file: file, line: line)
+        trackForMemoryLeaks(instance: sut, file: file, line: line)
+        return (sut, loader)
     }
     
     private class FeedImageLoaderSpy: FeedImageDataLoader {
