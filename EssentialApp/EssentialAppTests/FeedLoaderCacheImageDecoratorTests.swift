@@ -70,7 +70,7 @@ class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
             loader.complete(with: data)
         }
         
-        XCTAssertEqual(cache.messages, [.save(data)])
+        XCTAssertEqual(cache.messages, [.save(data)], "Expected data cached on loader success")
     }
     
     func test_load_doesNotcacheFeedImageOnLoaderFailure() {
@@ -82,7 +82,7 @@ class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
             loader.complete(with: error)
         }
         
-        XCTAssertTrue(cache.messages.isEmpty)
+        XCTAssertTrue(cache.messages.isEmpty, "Expect to not cache data after loader failure")
     }
     
     // MARK: - Helpers
