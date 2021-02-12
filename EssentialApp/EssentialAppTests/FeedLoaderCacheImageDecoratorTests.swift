@@ -24,12 +24,6 @@ class FeedLoaderCacheImageDecorator: FeedImageDataLoader {
         self.cache = cache
     }
     
-    private struct Task: FeedImageDataLoaderTask {
-        func cancel() {
-            
-        }
-    }
-    
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
         let task = loader.loadImageData(from: url, completion: { [weak self] result in
             completion(result.map { data in
