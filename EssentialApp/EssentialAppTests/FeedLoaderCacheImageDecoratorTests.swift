@@ -43,6 +43,12 @@ class FeedLoaderCacheImageDecorator: FeedImageDataLoader {
 
 class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
     
+    func test_init_doesNotLoadImageData() {
+        let (_, loader) = makeSUT()
+
+        XCTAssertTrue(loader.loadedURLs.isEmpty, "Expected no loaded URLs")
+    }
+    
     func test_load_deliversImageDataFeedOnSuccess() {
         let (sut, loader) = makeSUT()
         let data = anyData()
@@ -85,6 +91,8 @@ class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
         XCTAssertTrue(cache.messages.isEmpty, "Expect to not cache data after loader failure")
     }
     
+    
+    
     // MARK: - Helpers
     
     private func makeSUT(cache: CacheImageSpy = .init(), file: StaticString = #file, line: UInt = #line) -> (sut: FeedImageDataLoader, loader: FeedImageLoaderSpy) {
@@ -113,6 +121,12 @@ class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedLoaderTestCase {
     private class FeedImageLoaderSpy: FeedImageDataLoader {
         
         private var messages: [(url: URL, completion: (FeedImageDataLoader.Result) -> Void)] = []
+        
+        private(set) var cancelledURLs = [URL]()
+
+        var loadedURLs: [URL] {
+            return messages.map { $0.url }
+        }
         
         private struct Task: FeedImageDataLoaderTask {
             func cancel() {
