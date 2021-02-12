@@ -120,7 +120,7 @@ class FeedLoaderCacheImageDecoratorTests: XCTestCase, FeedImageLoaderTestCase {
             case save(Data)
         }
         
-        func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void) {
+        func save(_ data: Data, for url: URL, completion: @escaping (FeedImageCache.Result) -> Void) {
             messages.append(.save(data))
             completion(.success(()))
         }

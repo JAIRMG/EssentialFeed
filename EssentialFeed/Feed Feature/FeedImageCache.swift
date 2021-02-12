@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol FeedImageCache {
-    typealias SaveResult = Result<Void, Swift.Error>
+    typealias Result = Swift.Result<Void, Swift.Error>
     
-    func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void)
+    func save(_ data: Data, for url: URL, completion: @escaping (Result) -> Void)
 }
