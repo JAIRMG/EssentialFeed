@@ -13,7 +13,7 @@ import EssentialFeed
 class FeedAcceptanceTests: XCTestCase {
 
     func test_onLaunch_appDisplaysRemoteFeedWhenUserHasConnectivity() {
-        let feed = launc(httpClient: .online(response), store: .empty)
+        let feed = launch(httpClient: .online(response), store: .empty)
         
      
         XCTAssertEqual(feed.numberOfRenderedFeedImageViews(), 2)
@@ -23,11 +23,11 @@ class FeedAcceptanceTests: XCTestCase {
     
     func test_onLaunch_appDisplaysCachedRemoteFeedWhenUserHasNoConnectivity() {
         let sharedStore = InMemoryFeedStore.empty
-        let onlineFeed = launc(httpClient: .online(response), store: sharedStore)
+        let onlineFeed = launch(httpClient: .online(response), store: sharedStore)
         onlineFeed.simulateFeedImageViewVisible(at: 0)
         onlineFeed.simulateFeedImageViewVisible(at: 1)
         
-        let offlineFeed = launc(httpClient: .offline, store: sharedStore)
+        let offlineFeed = launch(httpClient: .offline, store: sharedStore)
         
         XCTAssertEqual(offlineFeed.numberOfRenderedFeedImageViews(), 2)
         XCTAssertEqual(offlineFeed.renderedFeedImageData(at: 0), makeImageData())
@@ -40,7 +40,7 @@ class FeedAcceptanceTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func launc(httpClient: HTTPClientStub = .offline, store: InMemoryFeedStore = .empty) -> FeedViewController {
+    private func launch(httpClient: HTTPClientStub = .offline, store: InMemoryFeedStore = .empty) -> FeedViewController {
         let sut = SceneDelegate(httpClient: httpClient, store: store)
         sut.window = UIWindow()
         sut.configureWindow()
