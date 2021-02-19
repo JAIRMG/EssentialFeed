@@ -17,8 +17,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(emptyFeed())
         
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .light)), named: "EMPTY_FEED_light")
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .dark)), named: "EMPTY_FEED_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "EMPTY_FEED_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "EMPTY_FEED_dark")
     }
     
     func test_feedWithContent() {
@@ -26,8 +26,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithContent())
         
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .light)), named: "FEED_WITH_CONTENT_light")
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_CONTENT_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
     }
     
     func test_feedWithErrorMessage() {
@@ -35,8 +35,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(.error(message: "This is a\nmultiline\n error message"))
         
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .light)), named: "FEED_WITH_ERROR_MESSAGE_light")
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .dark)), named: "FEED_WITH_ERROR_MESSAGE_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_MESSAGE_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_MESSAGE_dark")
     }
     
     func test_feedWithFailedImageLoading() {
@@ -44,8 +44,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithFailedImageLoading())
         
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_light")
-        assert(snapshot: sut.snapshot(for: .iphone8(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_dark")
     }
     
     //MARK: - Helpers
@@ -145,7 +145,7 @@ struct SnapshotConfiguration {
     let layoutMargins: UIEdgeInsets
     let traitCollection: UITraitCollection
     
-    static func iphone8(style: UIUserInterfaceStyle) -> SnapshotConfiguration {
+    static func iPhone8(style: UIUserInterfaceStyle) -> SnapshotConfiguration {
         return SnapshotConfiguration(
              size: CGSize(width: 375, height: 667),
              safeAreaInsets: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0),
@@ -165,7 +165,7 @@ struct SnapshotConfiguration {
 }
 
 private final class SnapshotWindow: UIWindow {
-    private var configuration: SnapshotConfiguration = .iphone8(style: .light)
+    private var configuration: SnapshotConfiguration = .iPhone8(style: .light)
     
     convenience init(configuration: SnapshotConfiguration, root: UIViewController) {
         self.init(frame: CGRect(origin: .zero, size: configuration.size))
