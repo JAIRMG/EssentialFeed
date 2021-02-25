@@ -1,6 +1,6 @@
 # EssentialFeed
 
-![CI](https://github.com/JAIRMG/EssentialFeed/workflows/CI/badge.svg)
+![](https://github.com/JAIRMG/EssentialFeed/workflows/CI/badge.svg)
 
 ## BDD Specs
 
