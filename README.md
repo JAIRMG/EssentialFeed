@@ -1,6 +1,8 @@
 # EssentialFeed
 
-![](https://github.com/JAIRMG/EssentialFeed/workflows/CI/badge.svg)
+[![CI-iOS](https://github.com/JAIRMG/EssentialFeed/actions/workflows/CI-iOS.yml/badge.svg)](https://github.com/JAIRMG/EssentialFeed/actions/workflows/CI-iOS.yml)
+[![CI-macOS](https://github.com/JAIRMG/EssentialFeed/actions/workflows/CI-macOS.yml/badge.svg)](https://github.com/JAIRMG/EssentialFeed/actions/workflows/CI-macOS.yml)
+
 
 ## BDD Specs
 
